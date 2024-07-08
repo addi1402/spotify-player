@@ -18,8 +18,8 @@ module.exports = {
     },
     extend: {
       spacing: {
-        calc100minus5rem: "calc(100% - 5rem)",
-        calc100minus5remby2: "calc((100% - 5rem)/2)",
+        calc100minus5rem: "calc(100% - 4rem)",
+        calc100minus5remby2: "calc((100% - 4rem)/2)",
       },
       keyframes: {
         "accordion-down": {
