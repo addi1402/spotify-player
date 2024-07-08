@@ -11,10 +11,14 @@ const FrameOne = () => {
         md:w-full md:flex-row md:items-center  
         px-8 py-8 flex 
         justify-between items-center 
-      bg-slate-300"
+      "
     >
-      <img src="/logo.svg" alt="Spotify Brand Logo" className="w-32" />
-      <Avatar>
+      <img
+        src="/logo.svg"
+        alt="Spotify Brand Logo"
+        className="w-24 lg:w-32 md:w-24 sm:w-24"
+      />
+      <Avatar className="w-8 h-auto lg:w-10">
         <AvatarImage src="https://github.com/shadcn.png" />
         <AvatarFallback>Profile</AvatarFallback>
       </Avatar>
