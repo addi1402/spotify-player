@@ -9,7 +9,7 @@ export default function Tabs({ tab, setTab }) {
       <p
         id="forYou"
         className={`cursor-pointer transition-all duration-300 ease-linear text-lg ${
-          tab === "forYou" ? "" : "text-neutral-400"
+          tab === "forYou" ? "" : "opacity-50"
         }`}
         onClick={switchTab}
       >
@@ -18,7 +18,7 @@ export default function Tabs({ tab, setTab }) {
       <p
         id="topTracks"
         className={`cursor-pointer transition-all duration-300 ease-linear text-lg ${
-          tab !== "forYou" ? "" : "text-neutral-400"
+          tab !== "forYou" ? "" : "opacity-50"
         }`}
         onClick={switchTab}
       >
