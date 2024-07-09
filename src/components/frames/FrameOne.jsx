@@ -13,12 +13,15 @@ const FrameOne = () => {
         justify-between items-center 
       "
     >
-      <img
-        src="/logo.svg"
-        alt="Spotify Brand Logo"
-        className="w-24 lg:w-32 md:w-24 sm:w-24"
-      />
-      <Avatar className="w-8 h-auto lg:w-10">
+      <a href="/">
+        <img
+          src="/logo.svg"
+          alt="Spotify Brand Logo"
+          className="w-24 lg:w-32 md:w-24 sm:w-24"
+        />
+      </a>
+
+      <Avatar className="w-8 h-auto lg:w-10 cursor-pointer">
         <AvatarImage src="https://github.com/shadcn.png" />
         <AvatarFallback>Profile</AvatarFallback>
       </Avatar>
