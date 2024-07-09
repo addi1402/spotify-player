@@ -1,12 +1,48 @@
+@font-face {
+  font-family: 'Circular';
+  src: url('./assets/fonts/CircularSpotifyText-Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circular';
+  src: url('./assets/fonts/CircularSpotifyText-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circular';
+  src: url('./assets/fonts/CircularSpotifyText-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circular';
+  src: url('./assets/fonts/CircularSpotifyText-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 'Circular';
+}
+
 body {
   color: white;
   background: linear-gradient(
-    to bottom right, 
-    rgb(6, 6, 101) 0%, 
+    to bottom right,
+    rgb(6, 6, 101) 0%,
     rgba(0, 0, 0, 1) 100%
   );
 }
@@ -18,4 +54,3 @@ img {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
-
