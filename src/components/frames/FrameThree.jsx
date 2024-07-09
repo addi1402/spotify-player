@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../../styles/Frames.module.css"; // Import CSS Modules
 
 const FrameThree = () => {
   return (
