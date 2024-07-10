@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "Circular";
   src: url("./assets/fonts/CircularSpotifyText-Book.otf") format("opentype");
@@ -26,10 +30,6 @@
   font-style: normal;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
   padding: 0;
   margin: 0;
@@ -38,14 +38,21 @@
   font-family: "Circular";
 }
 
+@property --accent {
+  syntax: '<color>';
+  initial-value: #03034f;
+  inherits: false;
+}
+
 body {
   color: white;
   overflow: hidden;
   background: linear-gradient(
     to bottom right,
-    rgb(3, 3, 79) 0%,
+    var(--accent) 0%,
     rgba(0, 0, 0, 1) 100%
   );
+  transition: --accent 3s;
 }
 
 img {

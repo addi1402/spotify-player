@@ -1,11 +1,16 @@
-export default function SongCard({ name, artist, url }) {
+export default function SongCard({ name, artist, url, cover, accent }) {
+  // Function for dynamic accent change
+  function handleClick(){
+    document.body.style.setProperty('--accent', accent);
+  }
+
   return (
-    <div className="flex items-center justify-between py-4 w-5/6 cursor-pointer hover:bg-white hover:bg-opacity-10 rounded-lg min-w-72 transition duration-300 ease-in-out px-4">
+    <div onClick={handleClick} className="flex items-center justify-between py-4 w-11/12 cursor-pointer hover:bg-white hover:bg-opacity-10 rounded-lg min-w-72 transition duration-300 ease-in-out px-4">
       <div className="flex gap-4">
         <img
-          src="https://indiater.com/wp-content/uploads/2021/06/Free-Music-Album-Cover-Art-Banner-Photoshop-Template-1024x1024.jpg"
+          src={`https://cms.samespace.com/assets/${cover}`}
           alt={`${name} Cover`}
-          className="w-12 h-auto rounded-full"
+          className="w-12 h-12 rounded-full object-cover"
         />
         <div>
           <p>{name}</p>
@@ -17,4 +22,4 @@ export default function SongCard({ name, artist, url }) {
       </div>
     </div>
   );
-};
+}

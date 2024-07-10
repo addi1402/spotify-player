@@ -10,7 +10,7 @@ export default function SearchBar() {
   }
 
   return (
-    <span className="flex mt-8 items-center w-5/6 h-8 px-4 py-5 rounded-md bg-opacity-20 bg-white min-w-72">
+    <span className="flex mt-8 items-center w-11/12 h-10 px-4 py-5 rounded-md bg-opacity-20 bg-white min-w-72">
       <input
         type="text"
         name="searchBar"
