@@ -49,7 +49,7 @@ body {
   overflow: hidden;
   background: linear-gradient(
     to bottom right,
-    var(--accent) 0%,
+    var(--accent) -20%,
     rgba(0, 0, 0, 1) 100%
   );
   transition: --accent 3s;

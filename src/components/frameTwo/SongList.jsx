@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSongs } from "@/redux/slices/dataSlice";
 import SongCard from "./SongCard";
-import Shimmer from "../miscellaneous/Shimmer";
+import Shimmer from "../miscellaneous/SongsShimmer";
 
 export default function SongList({ tab }) {
   const dispatch = useDispatch();
@@ -17,9 +17,10 @@ export default function SongList({ tab }) {
       className="mt-6 scroll-smooth flex-grow overflow-scroll"
       id="scrollable"
     >
-      {loading && Array.from({ length: 8 }, (_, index) => {
-        return <Shimmer key={index}/>
-      })}
+      {loading &&
+        Array.from({ length: 8 }, (_, index) => {
+          return <Shimmer key={index} />;
+        })}
       {error && <div>Error: {error}</div>}
       {tab === "forYou" ? (
         <div>

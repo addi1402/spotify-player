@@ -18,7 +18,7 @@ export default function SearchBar() {
         value={query}
         onChange={updateQuery}
         placeholder="What do you want to play?"
-        className="focus:outline-none text-white bg-transparent w-full text-sm placeholder:opacity-40 placeholder:text-white"
+        className="focus:outline-none text-white bg-transparent w-full text-base placeholder:opacity-40 placeholder:text-white"
         autoComplete="off"
       />
       <IoIosSearch className="text-2xl text-white opacity-40" />
