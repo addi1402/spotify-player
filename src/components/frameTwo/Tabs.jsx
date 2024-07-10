@@ -5,10 +5,10 @@ export default function Tabs({ tab, setTab }) {
     setTab(tab === "forYou" ? "topTracks" : "forYou");
   }
   return (
-    <nav className="flex gap-10 font-bold">
+    <nav className="flex gap-10 font-bold text-lg">
       <p
         id="forYou"
-        className={`cursor-pointer transition-all duration-300 ease-linear text-lg ${
+        className={`cursor-pointer transition-all duration-200 ease-linear ${
           tab === "forYou" ? "" : "opacity-50"
         }`}
         onClick={switchTab}
@@ -17,7 +17,7 @@ export default function Tabs({ tab, setTab }) {
       </p>
       <p
         id="topTracks"
-        className={`cursor-pointer transition-all duration-300 ease-linear text-lg ${
+        className={`cursor-pointer transition-all duration-200 ease-linear ${
           tab !== "forYou" ? "" : "opacity-50"
         }`}
         onClick={switchTab}

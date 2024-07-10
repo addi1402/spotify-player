@@ -40,9 +40,10 @@
 
 body {
   color: white;
+  overflow: hidden;
   background: linear-gradient(
     to bottom right,
-    rgb(6, 6, 101) 0%,
+    rgb(3, 3, 79) 0%,
     rgba(0, 0, 0, 1) 100%
   );
 }
