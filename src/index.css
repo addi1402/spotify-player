@@ -59,3 +59,8 @@ img {
 #scrollable::-webkit-scrollbar {
   display: none;
 }
+
+::selection {
+  background: rgba(255, 255, 255, 0.15); /* White background with 50% opacity */
+  color: #ffffff; /* White text color */
+}
