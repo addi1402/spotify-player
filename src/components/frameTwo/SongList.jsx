@@ -12,7 +12,7 @@ export default function SongList({ tab }) {
   }, [dispatch]);
 
   return (
-    <main className="mt-6 scroll-smooth overflow-y-auto">
+    <main className="mt-6 scroll-smooth flex-grow overflow-scroll" id="scrollable">
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
       {tab === "forYou" ? (

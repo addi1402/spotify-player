@@ -13,8 +13,7 @@ const FrameTwo = () => {
       lg:w-2/6 lg:h-full 
       md:w-1/2 md:h-calc100minus5rem 
       sm:w-full sm:h-calc100minus5remby2 
-      p-10
-      bg-black"
+      p-10 flex flex-col gap-0"
     >
       <Tabs tab={tab} setTab={setTab} />
       <SearchBar />

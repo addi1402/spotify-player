@@ -1,27 +1,27 @@
 @font-face {
-  font-family: 'Circular';
-  src: url('./assets/fonts/CircularSpotifyText-Book.otf') format('opentype');
+  font-family: "Circular";
+  src: url("./assets/fonts/CircularSpotifyText-Book.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Circular';
-  src: url('./assets/fonts/CircularSpotifyText-Medium.otf') format('opentype');
+  font-family: "Circular";
+  src: url("./assets/fonts/CircularSpotifyText-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Circular';
-  src: url('./assets/fonts/CircularSpotifyText-Bold.otf') format('opentype');
+  font-family: "Circular";
+  src: url("./assets/fonts/CircularSpotifyText-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Circular';
-  src: url('./assets/fonts/CircularSpotifyText-Black.otf') format('opentype');
+  font-family: "Circular";
+  src: url("./assets/fonts/CircularSpotifyText-Black.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
 }
@@ -35,7 +35,7 @@
   margin: 0;
   box-sizing: border-box;
   user-select: none;
-  font-family: 'Circular';
+  font-family: "Circular";
 }
 
 body {
@@ -54,4 +54,8 @@ img {
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+}
+
+#scrollable::-webkit-scrollbar {
+  display: none;
 }
