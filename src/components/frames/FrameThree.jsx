@@ -1,9 +1,26 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import SongShimmer from "../miscellaneous/SongShimmer";
+import { Skeleton } from "../ui/skeleton";
 
 const FrameThree = () => {
-  const { data, loading, current } = useSelector((store) => store.songs);
+  const { loading, current } = useSelector((store) => store.songs);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [fadeClass, setFadeClass] = useState("opacity-100");
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  useEffect(() => {
+    setFadeClass("opacity-0");
+    const timeoutId = setTimeout(() => {
+      setFadeClass("opacity-100");
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+  }, [current]);
+
   return (
     <div
       className="
@@ -22,17 +39,24 @@ const FrameThree = () => {
             <h1 className="text-3xl font-bold">{current.name}</h1>
             <p className="text-white opacity-60">{current.artist}</p>
           </div>
-          <img
-            src={current.cover}
-            alt={`${current.name} Cover Image`}
-            className="h-96 w-96 rounded-lg mt-8 object-cover"
-          />
+          <div className="h-96 w-96 mt-8 relative">
+            {!imageLoaded && (
+              <Skeleton className="absolute inset-0 rounded-lg" />
+            )}
+            <img
+              src={current.cover}
+              alt={`${current.name} Cover Image`}
+              className={`h-96 w-96 rounded-lg object-cover transition-opacity duration-600 ${fadeClass} ${
+                imageLoaded ? "block" : "hidden"
+              }`}
+              onLoad={handleImageLoad}
+            />
+          </div>
           <p className="mt-4">Loader</p>
           <div className="flex justify-between mt-8">
             <div className="bg-slate-100 hover:bg-opacity-15 bg-opacity-10 rounded-full h-12 w-12 flex justify-center items-center cursor-pointer transition duration-300">
               <img src="/options.svg" alt="Options" />
             </div>
-
             <img
               src="/previous.svg"
               alt="Previous Song"
