@@ -13,13 +13,13 @@ const FrameThree = () => {
   };
 
   useEffect(() => {
-    setFadeClass("opacity-0");
+    setFadeClass("opacity-30");
     const timeoutId = setTimeout(() => {
       setFadeClass("opacity-100");
-    }, 200);
+    }, 250);
 
     return () => clearTimeout(timeoutId);
-  }, [current]);
+  }, [current.cover]);
 
   return (
     <div
@@ -46,7 +46,7 @@ const FrameThree = () => {
             <img
               src={current.cover}
               alt={`${current.name} Cover Image`}
-              className={`h-96 w-96 rounded-lg object-cover transition-opacity duration-600 ${fadeClass} ${
+              className={`h-96 w-96 rounded-lg object-cover transition-opacity duration-500 ${fadeClass} ${
                 imageLoaded ? "block" : "hidden"
               }`}
               onLoad={handleImageLoad}
