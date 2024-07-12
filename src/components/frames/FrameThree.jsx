@@ -5,7 +5,10 @@ import SongHeader from "../frameThree/SongHeader";
 import SongCoverImage from "../frameThree/SongCoverImage";
 import Tracer from "../frameThree/Tracer";
 import Controls from "../frameThree/Controls";
-import { playNext, playPrevious } from "@/redux/slices/dataSlice";
+import {
+  playNext,
+  playPrevious,
+} from "@/redux/slices/dataSlice";
 
 const FrameThree = () => {
   const dispatch = useDispatch();
@@ -13,7 +16,7 @@ const FrameThree = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [fadeClass, setFadeClass] = useState("opacity-100");
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [ currentTime, setCurrentTime ] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [showVolumeControl, setShowVolumeControl] = useState(false);
@@ -120,6 +123,9 @@ const FrameThree = () => {
             handlePreviousSong={handlePreviousSong}
             handleNextSong={handleNextSong}
             isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+            currentTime={currentTime}
+            duration={duration}
             togglePlayPause={togglePlayPause}
             showVolumeControl={showVolumeControl}
             setShowVolumeControl={setShowVolumeControl}
