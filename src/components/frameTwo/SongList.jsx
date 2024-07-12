@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSongs, searchSong } from "@/redux/slices/dataSlice";
+import { fetchSongs } from "@/redux/slices/dataSlice";
 import SongCard from "./SongCard";
 import Shimmer from "../miscellaneous/SongsShimmer";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function SongList() {
   const dispatch = useDispatch();
-  const { loading, error, current, searchResults } = useSelector(
+  const { loading, error, current, searchResults, songTab } = useSelector(
     (store) => store.songs
   );
-  const { tab } = useSelector((store) => store.tabs);
-  const [activeTab, setActiveTab] = useState(tab);
+  const [activeTab, setActiveTab] = useState(songTab);
   const [fadeClass, setFadeClass] = useState("opacity-100");
 
   // Initial Song Fetching
@@ -30,12 +29,12 @@ export default function SongList() {
     setFadeClass("opacity-0");
     const timeoutId = setTimeout(() => {
       // After fade out, change tab and fade in
-      setActiveTab(tab);
+      setActiveTab(songTab);
       setFadeClass("opacity-100");
     }, 250);
 
     return () => clearTimeout(timeoutId);
-  }, [tab]);
+  }, [songTab]);
 
   return (
     <main
@@ -49,7 +48,7 @@ export default function SongList() {
       {error && <div>Error: {error}</div>}
       <div className={`transition-opacity duration-500 ${fadeClass}`}>
         {activeTab === "forYou" ? (
-          <TransitionGroup component='div'>
+          <TransitionGroup component="div">
             {searchResults?.map((song) => (
               <CSSTransition key={song.id} timeout={300} classNames="fade">
                 <SongCard key={song.id} {...song} />
@@ -58,7 +57,7 @@ export default function SongList() {
           </TransitionGroup>
         ) : (
           <div>
-            <TransitionGroup component='div'>
+            <TransitionGroup component="div">
               {searchResults?.map((song) => {
                 if (song.top_track) {
                   return (

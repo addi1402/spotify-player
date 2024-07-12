@@ -1,21 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setTab } from "@/redux/slices/tabSlice";
+import { setSongTab } from "@/redux/slices/dataSlice";
 
 export default function Tabs() {
-  const { tab } = useSelector((store) => store.tabs);
+  const { songTab } = useSelector((store) => store.songs);
   const dispatch = useDispatch();
 
   // Function to trigger tab change
   function switchTab(e) {
-    if (e.target.id === tab) return;
-    dispatch(setTab(tab === "forYou" ? "topTracks" : "forYou"));
+    if (e.target.id === songTab) return;
+    dispatch(setSongTab(songTab === "forYou" ? "topTracks" : "forYou"));
   }
   return (
     <nav className="flex gap-10 font-bold text-lg">
       <p
         id="forYou"
         className={`cursor-pointer transition-all duration-200 ease-linear ${
-          tab === "forYou" ? "" : "opacity-50"
+          songTab === "forYou" ? "" : "opacity-50"
         }`}
         onClick={switchTab}
       >
@@ -24,7 +24,7 @@ export default function Tabs() {
       <p
         id="topTracks"
         className={`cursor-pointer transition-all duration-200 ease-linear ${
-          tab !== "forYou" ? "" : "opacity-50"
+          songTab !== "forYou" ? "" : "opacity-50"
         }`}
         onClick={switchTab}
       >

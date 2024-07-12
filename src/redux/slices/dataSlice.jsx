@@ -22,6 +22,7 @@ const songSlice = createSlice({
     data: [],
     searchResults: [],
     current: {},
+    songTab: "forYou",
     loading: false,
     error: null,
   },
@@ -79,13 +80,19 @@ const songSlice = createSlice({
     searchSong: (state, action) => {
       if (action.payload === "") state.searchResults = state.data;
       else {
-        state.searchResults = state.data.filter((song) =>
-          song.name.toLowerCase().includes(action.payload.toLowerCase()) || song.artist.toLowerCase().includes(action.payload.toLowerCase())
+        state.searchResults = state.data.filter(
+          (song) =>
+            song.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+            song.artist.toLowerCase().includes(action.payload.toLowerCase())
         );
       }
+    },
+    setSongTab: (state, action) => {
+      state.songTab = action.payload;
     },
   },
 });
 
 export default songSlice.reducer;
-export const { setCurrent, playNext, playPrevious, searchSong } = songSlice.actions;
+export const { setCurrent, playNext, playPrevious, searchSong, setSongTab } =
+  songSlice.actions;

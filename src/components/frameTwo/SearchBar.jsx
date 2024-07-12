@@ -6,7 +6,6 @@ import { searchSong } from "../../redux/slices/dataSlice"; // Adjust the import 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
-  const searchResults = useSelector((state) => state.songs.searchResults);
 
   useEffect(() => {
     dispatch(searchSong(query));
