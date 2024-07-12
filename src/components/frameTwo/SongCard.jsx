@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrent } from "@/redux/slices/dataSlice";
 import { Skeleton } from "../ui/skeleton";
 import AudioDuration from "./AudioDuration";
-import { current } from "@reduxjs/toolkit";
 
 const SongCard = ({ name, artist, url, cover, accent, id }) => {
   const dispatch = useDispatch();
@@ -30,34 +29,35 @@ const SongCard = ({ name, artist, url, cover, accent, id }) => {
   };
 
   return (
-    <div
-      onClick={handleClick}
-      className={`flex items-center justify-between py-4 w-11/12 cursor-pointer hover:bg-white hover:bg-opacity-5 rounded-lg min-w-72 transition duration-300 ease-in-out px-4 ${
-        songPlaying ? "bg-white bg-opacity-10" : ""
-      }`}
-    >
-      <div className="flex gap-4">
-        {!imageLoaded && (
-          <Skeleton
-            className="w-12 h-12 rounded-full animate-pulse"
-            style={{ minWidth: "48px" }} // Adjust size as per your design
+    
+      <div
+        onClick={handleClick}
+        className={` flex items-center justify-between py-4 w-11/12 cursor-pointer hover:bg-white hover:bg-opacity-5 rounded-lg min-w-72 transition duration-300 ease-in-out px-4 ${
+          songPlaying ? "bg-white bg-opacity-10" : ""
+        }`}
+      >
+        <div className="flex gap-4">
+          {!imageLoaded && (
+            <Skeleton
+              className="w-12 h-12 rounded-full animate-pulse"
+              style={{ minWidth: "48px" }} // Adjust size as per your design
+            />
+          )}
+          <img
+            src={`https://cms.samespace.com/assets/${cover}`}
+            alt={`${name} Cover`}
+            className={`w-12 h-12 rounded-full object-cover ${
+              imageLoaded ? "block" : "hidden"
+            }`}
+            onLoad={handleImageLoad}
           />
-        )}
-        <img
-          src={`https://cms.samespace.com/assets/${cover}`}
-          alt={`${name} Cover`}
-          className={`w-12 h-12 rounded-full object-cover ${
-            imageLoaded ? "block" : "hidden"
-          }`}
-          onLoad={handleImageLoad}
-        />
-        <div>
-          <p>{name}</p>
-          <p className="text-sm opacity-60">{artist}</p>
+          <div>
+            <p>{name}</p>
+            <p className="text-sm opacity-60">{artist}</p>
+          </div>
         </div>
+        <AudioDuration url={url} />
       </div>
-      <AudioDuration url={url} />
-    </div>
   );
 };
 

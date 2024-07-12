@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSongs, searchSong } from "@/redux/slices/dataSlice";
 import SongCard from "./SongCard";
 import Shimmer from "../miscellaneous/SongsShimmer";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function SongList() {
   const dispatch = useDispatch();
-  const { data, loading, error, current, searchResults } = useSelector((store) => store.songs);
+  const { loading, error, current, searchResults } = useSelector(
+    (store) => store.songs
+  );
   const { tab } = useSelector((store) => store.tabs);
   const [activeTab, setActiveTab] = useState(tab);
   const [fadeClass, setFadeClass] = useState("opacity-100");
@@ -46,16 +49,31 @@ export default function SongList() {
       {error && <div>Error: {error}</div>}
       <div className={`transition-opacity duration-500 ${fadeClass}`}>
         {activeTab === "forYou" ? (
-          <div>
+          <TransitionGroup component='div'>
             {searchResults?.map((song) => (
-              <SongCard key={song.id} {...song} />
+              <CSSTransition key={song.id} timeout={300} classNames="fade">
+                <SongCard key={song.id} {...song} />
+              </CSSTransition>
             ))}
-          </div>
+          </TransitionGroup>
         ) : (
           <div>
-            {searchResults?.map((song) => {
-              if (song.top_track) return <SongCard key={song.id} {...song} />;
-            })}
+            <TransitionGroup component='div'>
+              {searchResults?.map((song) => {
+                if (song.top_track) {
+                  return (
+                    <CSSTransition
+                      key={song.id}
+                      timeout={300}
+                      classNames="fade"
+                    >
+                      <SongCard key={song.id} {...song} />
+                    </CSSTransition>
+                  );
+                }
+                return null; // Handle other cases if needed
+              })}
+            </TransitionGroup>
           </div>
         )}
       </div>

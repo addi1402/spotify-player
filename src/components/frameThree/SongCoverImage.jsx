@@ -7,7 +7,7 @@ export default function SongCoverImage({
   fadeClass,
 }) {
   return (
-    <div className="h-96 w-96 mt-8 relative">
+    <div className=" h-96 w-96 mt-8 relative">
       {!imageLoaded && <Skeleton className="absolute inset-0 rounded-lg" />}
       <img
         src={current.cover}
