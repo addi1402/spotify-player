@@ -15,15 +15,18 @@ const SongCard = ({ name, artist, url, cover, accent }) => {
 
   // Function to dispatch current song data
   const handleClick = () => {
-    dispatch(
-      setCurrent({
+    const currentSong = {
         cover: `https://cms.samespace.com/assets/${cover}`,
         name: name,
         artist: artist,
         url: url,
         accent: accent,
-      })
-    );
+      };
+    dispatch(
+      setCurrent(currentSong));
+    if(current === currentSong){
+      
+    }
   };
 
   return (
