@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrent } from "@/redux/slices/dataSlice";
 import { Skeleton } from "../ui/skeleton";
+import AudioDuration from "./AudioDuration";
 
 const SongCard = ({ name, artist, url, cover, accent }) => {
   const dispatch = useDispatch();
@@ -50,9 +51,7 @@ const SongCard = ({ name, artist, url, cover, accent }) => {
           <p className="text-sm opacity-60">{artist}</p>
         </div>
       </div>
-      <div>
-        <span className="opacity-60">4:16</span>
-      </div>
+      <AudioDuration url={url} />
     </div>
   );
 };

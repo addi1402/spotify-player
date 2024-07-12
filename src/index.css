@@ -39,7 +39,7 @@
 }
 
 @property --accent {
-  syntax: '<color>';
+  syntax: "<color>";
   initial-value: #03034f;
   inherits: false;
 }
