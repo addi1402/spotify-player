@@ -52,30 +52,52 @@ const songSlice = createSlice({
       state.current = action.payload;
     },
     playNext: (state) => {
-      const index = state.data.findIndex(
-        (song) => song.id === state.current.id
-      );
-      if (index < state.data.length - 1) {
-        state.current = {
-          ...state.data[index + 1],
-          cover: `https://cms.samespace.com/assets/${
-            state.data[index + 1].cover
-          }`,
-        };
+      // Following CONTEXTUAL approach
+      let index, nextIndex, nextSong, filteredList;
+      filteredList = state.data.filter((song) => song.top_track);
+
+      // Determining current index based on tab
+      if (state.songTab === "forYou") {
+        index = state.data.findIndex((song) => song.id === state.current.id);
+        nextIndex = (index + 1) % state.data.length;
+        nextSong = state.data[nextIndex];
+      } else {
+        index = filteredList.findIndex((song) => song.id === state.current.id);
+        if (index === -1) {
+          nextIndex = 0;
+        } else {
+          nextIndex = (index + 1) % filteredList.length;
+        }
+        nextSong = filteredList[nextIndex];
       }
+      state.current = {
+        ...nextSong,
+        cover: `https://cms.samespace.com/assets/${nextSong.cover}`,
+      };
     },
     playPrevious: (state) => {
-      const index = state.data.findIndex(
-        (song) => song.id === state.current.id
-      );
-      if (index > 0) {
-        state.current = {
-          ...state.data[index - 1],
-          cover: `https://cms.samespace.com/assets/${
-            state.data[index - 1].cover
-          }`,
-        };
+      // Following CONTEXTUAL and USER CENTRIC approach
+
+      let index, prevIndex, prevSong, filteredList;
+      filteredList = state.data.filter((song) => song.top_track);
+
+      if (state.songTab === "forYou") {
+        index = state.data.findIndex((song) => song.id === state.current.id);
+        prevIndex = (index - 1 + state.data.length) % state.data.length;
+        prevSong = state.data[prevIndex];
+      } else {
+        index = filteredList.findIndex((song) => song.id === state.current.id);
+        if (index === -1) {
+          prevIndex = filteredList.length - 1;
+        } else {
+          prevIndex = (index - 1 + filteredList.length) % filteredList.length;
+        }
+        prevSong = filteredList[prevIndex];
       }
+      state.current = {
+        ...prevSong,
+        cover: `https://cms.samespace.com/assets/${prevSong.cover}`,
+      };
     },
     searchSong: (state, action) => {
       if (action.payload === "") state.searchResults = state.data;
