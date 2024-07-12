@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrent } from "@/redux/slices/dataSlice";
 import { Skeleton } from "../ui/skeleton";
 import AudioDuration from "./AudioDuration";
+import { current } from "@reduxjs/toolkit";
 
 const SongCard = ({ name, artist, url, cover, accent, id }) => {
   const dispatch = useDispatch();
+  const { current } = useSelector((store) => store.songs);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const songPlaying = current.id === id;
 
   // Function to handle image load completion
   const handleImageLoad = () => {
@@ -24,14 +27,14 @@ const SongCard = ({ name, artist, url, cover, accent, id }) => {
       accent: accent,
     };
     dispatch(setCurrent(currentSong));
-    if (current === currentSong) {
-    }
   };
 
   return (
     <div
       onClick={handleClick}
-      className="flex items-center justify-between py-4 w-11/12 cursor-pointer hover:bg-white hover:bg-opacity-10 rounded-lg min-w-72 transition duration-300 ease-in-out px-4"
+      className={`flex items-center justify-between py-4 w-11/12 cursor-pointer hover:bg-white hover:bg-opacity-5 rounded-lg min-w-72 transition duration-300 ease-in-out px-4 ${
+        songPlaying ? "bg-white bg-opacity-10" : ""
+      }`}
     >
       <div className="flex gap-4">
         {!imageLoaded && (
