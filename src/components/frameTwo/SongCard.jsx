@@ -4,7 +4,7 @@ import { setCurrent } from "@/redux/slices/dataSlice";
 import { Skeleton } from "../ui/skeleton";
 import AudioDuration from "./AudioDuration";
 
-const SongCard = ({ name, artist, url, cover, accent }) => {
+const SongCard = ({ name, artist, url, cover, accent, id }) => {
   const dispatch = useDispatch();
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -16,16 +16,15 @@ const SongCard = ({ name, artist, url, cover, accent }) => {
   // Function to dispatch current song data
   const handleClick = () => {
     const currentSong = {
-        cover: `https://cms.samespace.com/assets/${cover}`,
-        name: name,
-        artist: artist,
-        url: url,
-        accent: accent,
-      };
-    dispatch(
-      setCurrent(currentSong));
-    if(current === currentSong){
-      
+      id: id,
+      cover: `https://cms.samespace.com/assets/${cover}`,
+      name: name,
+      artist: artist,
+      url: url,
+      accent: accent,
+    };
+    dispatch(setCurrent(currentSong));
+    if (current === currentSong) {
     }
   };
 

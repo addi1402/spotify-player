@@ -5,6 +5,7 @@ import SongHeader from "../frameThree/SongHeader";
 import SongCoverImage from "../frameThree/SongCoverImage";
 import Tracer from "../frameThree/Tracer";
 import Controls from "../frameThree/Controls";
+import { playNext, playPrevious } from "@/redux/slices/dataSlice";
 
 const FrameThree = () => {
   const dispatch = useDispatch();
@@ -78,11 +79,11 @@ const FrameThree = () => {
   };
 
   const handlePreviousSong = () => {
-    dispatch({ type: "PREVIOUS_SONG" });
+    dispatch(playPrevious());
   };
 
   const handleNextSong = () => {
-    dispatch({ type: "NEXT_SONG" });
+    dispatch(playNext());
   };
 
   const handleVolumeChange = (e) => {

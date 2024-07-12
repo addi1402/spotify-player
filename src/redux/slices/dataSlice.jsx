@@ -48,8 +48,34 @@ const songSlice = createSlice({
     setCurrent: (state, action) => {
       state.current = action.payload;
     },
+    playNext: (state) => {
+      const index = state.data.findIndex(
+        (song) => song.id === state.current.id
+      );
+      if (index < state.data.length - 1) {
+        state.current = {
+          ...state.data[index + 1],
+          cover: `https://cms.samespace.com/assets/${
+            state.data[index + 1].cover
+          }`,
+        };
+      }
+    },
+    playPrevious: (state) => {
+      const index = state.data.findIndex(
+        (song) => song.id === state.current.id
+      );
+      if (index > 0) {
+        state.current = {
+          ...state.data[index - 1],
+          cover: `https://cms.samespace.com/assets/${
+            state.data[index - 1].cover
+          }`,
+        };
+      }
+    },
   },
 });
 
 export default songSlice.reducer;
-export const { setCurrent } = songSlice.actions;
+export const { setCurrent, playNext, playPrevious } = songSlice.actions;
