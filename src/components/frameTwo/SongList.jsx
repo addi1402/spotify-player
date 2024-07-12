@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSongs } from "@/redux/slices/dataSlice";
+import { fetchSongs, searchSong } from "@/redux/slices/dataSlice";
 import SongCard from "./SongCard";
 import Shimmer from "../miscellaneous/SongsShimmer";
 
-export default function SongList({ tab }) {
+export default function SongList() {
   const dispatch = useDispatch();
-  const { data, loading, error, current } = useSelector((store) => store.songs);
+  const { data, loading, error, current, searchResults } = useSelector((store) => store.songs);
+  const { tab } = useSelector((store) => store.tabs);
   const [activeTab, setActiveTab] = useState(tab);
   const [fadeClass, setFadeClass] = useState("opacity-100");
 
@@ -46,13 +47,13 @@ export default function SongList({ tab }) {
       <div className={`transition-opacity duration-500 ${fadeClass}`}>
         {activeTab === "forYou" ? (
           <div>
-            {data?.map((song) => (
+            {searchResults?.map((song) => (
               <SongCard key={song.id} {...song} />
             ))}
           </div>
         ) : (
           <div>
-            {data?.map((song) => {
+            {searchResults?.map((song) => {
               if (song.top_track) return <SongCard key={song.id} {...song} />;
             })}
           </div>

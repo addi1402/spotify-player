@@ -4,7 +4,6 @@ import SongList from "../frameTwo/SongList";
 import SearchBar from "../frameTwo/SearchBar";
 
 const FrameTwo = () => {
-  const [tab, setTab] = useState("forYou");
 
   return (
     <div
@@ -16,10 +15,10 @@ const FrameTwo = () => {
       p-10 pb-0 flex flex-col gap-0 "
     >
       <div>
-        <Tabs tab={tab} setTab={setTab} />
+        <Tabs/>
         <SearchBar />
       </div>
-      <SongList tab={tab} />
+      <SongList/>
     </div>
   );
 };

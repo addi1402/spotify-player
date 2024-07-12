@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { IoIosSearch } from "react-icons/io";
+import { searchSong } from "../../redux/slices/dataSlice"; // Adjust the import path as necessary
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+  const searchResults = useSelector((state) => state.songs.searchResults);
 
-  // Controlled Search Function
+  useEffect(() => {
+    dispatch(searchSong(query));
+  }, [query, dispatch]);
+
   function updateQuery(e) {
     setQuery(e.target.value);
   }

@@ -20,6 +20,7 @@ const songSlice = createSlice({
   name: "songs",
   initialState: {
     data: [],
+    searchResults: [],
     current: {},
     loading: false,
     error: null,
@@ -38,6 +39,7 @@ const songSlice = createSlice({
           ...action.payload[0],
           cover: `https://cms.samespace.com/assets/${action.payload[0].cover}`,
         };
+        state.searchResults = state.data;
       })
       .addCase(fetchSongs.rejected, (state, action) => {
         state.error = action.error.message;
@@ -74,8 +76,16 @@ const songSlice = createSlice({
         };
       }
     },
+    searchSong: (state, action) => {
+      if (action.payload === "") state.searchResults = state.data;
+      else {
+        state.searchResults = state.data.filter((song) =>
+          song.name.toLowerCase().includes(action.payload.toLowerCase()) || song.artist.toLowerCase().includes(action.payload.toLowerCase())
+        );
+      }
+    },
   },
 });
 
 export default songSlice.reducer;
-export const { setCurrent, playNext, playPrevious } = songSlice.actions;
+export const { setCurrent, playNext, playPrevious, searchSong } = songSlice.actions;

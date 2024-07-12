@@ -1,8 +1,14 @@
-export default function Tabs({ tab, setTab }) {
+import { useSelector, useDispatch } from "react-redux";
+import { setTab } from "@/redux/slices/tabSlice";
+
+export default function Tabs() {
+  const { tab } = useSelector((store) => store.tabs);
+  const dispatch = useDispatch();
+
   // Function to trigger tab change
   function switchTab(e) {
     if (e.target.id === tab) return;
-    setTab(tab === "forYou" ? "topTracks" : "forYou");
+    dispatch(setTab(tab === "forYou" ? "topTracks" : "forYou"));
   }
   return (
     <nav className="flex gap-10 font-bold text-lg">
