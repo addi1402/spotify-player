@@ -8,7 +8,7 @@ export default function SongShimmer() {
         <Skeleton className="h-6 w-24 rounded-md" />
       </div>
       <Skeleton className="h-96 w-96 rounded-lg mt-8" />
-      <Skeleton className="h-3 w-96 rounded-lg mt-4" />
+      <Skeleton className="h-2 w-96 rounded-lg mt-6" />
     </div>
   );
 }
