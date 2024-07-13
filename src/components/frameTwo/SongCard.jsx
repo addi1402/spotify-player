@@ -32,7 +32,7 @@ const SongCard = ({ name, artist, url, cover, accent, id }) => {
     
       <div
         onClick={handleClick}
-        className={` flex items-center justify-between py-4 w-11/12 cursor-pointer hover:bg-white hover:bg-opacity-5 rounded-lg min-w-72 transition duration-300 ease-in-out px-4 ${
+        className={` flex items-center justify-between py-4 w-11/12 cursor-pointer hover:bg-white hover:bg-opacity-5 rounded-lg transition duration-300 ease-in-out px-4 ${
           songPlaying ? "bg-white bg-opacity-10" : ""
         }`}
       >

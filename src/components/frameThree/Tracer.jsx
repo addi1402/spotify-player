@@ -5,7 +5,7 @@ export default function Tracer({
   formatTime,
 }) {
   return (
-    <div className="mt-4 w-full">
+    <div className="mt-4 w-full lg:w-full md:w-72 sm:w-full">
       <input
         type="range"
         min="0"
