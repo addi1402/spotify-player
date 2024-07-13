@@ -23,6 +23,7 @@ const songSlice = createSlice({
     searchResults: [],
     current: {},
     songTab: "forYou",
+    showSongs: "true",
     loading: false,
     error: null,
   },
@@ -112,9 +113,18 @@ const songSlice = createSlice({
     setSongTab: (state, action) => {
       state.songTab = action.payload;
     },
+    setShowSongs: (state) => {
+      state.showSongs = !state.showSongs;
+    },
   },
 });
 
 export default songSlice.reducer;
-export const { setCurrent, playNext, playPrevious, searchSong, setSongTab } =
-  songSlice.actions;
+export const {
+  setCurrent,
+  playNext,
+  playPrevious,
+  searchSong,
+  setSongTab,
+  setShowSongs,
+} = songSlice.actions;

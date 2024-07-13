@@ -38,7 +38,7 @@ export default function SongList() {
 
   return (
     <main
-      className="mt-6 scroll-smooth flex-grow overflow-scroll min-w-80"
+      className="mt-6 scroll-smooth flex-grow overflow-scroll min-w-80 lg:h-calcSongList md:h-calcSongListMedium"
       id="scrollable"
     >
       {loading &&

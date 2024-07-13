@@ -5,10 +5,7 @@ import SongHeader from "../frameThree/SongHeader";
 import SongCoverImage from "../frameThree/SongCoverImage";
 import Tracer from "../frameThree/Tracer";
 import Controls from "../frameThree/Controls";
-import {
-  playNext,
-  playPrevious,
-} from "@/redux/slices/dataSlice";
+import { playNext, playPrevious } from "@/redux/slices/dataSlice";
 
 const FrameThree = () => {
   const dispatch = useDispatch();
@@ -16,7 +13,7 @@ const FrameThree = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [fadeClass, setFadeClass] = useState("opacity-100");
   const [isPlaying, setIsPlaying] = useState(false);
-  const [ currentTime, setCurrentTime ] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [showVolumeControl, setShowVolumeControl] = useState(false);
@@ -96,7 +93,7 @@ const FrameThree = () => {
   };
 
   return (
-    <div className=" w-full h-calc100minus5rem lg:w-3/6 lg:h-full md:w-1/2 md:h-calc100minus5rem sm:w-full sm:h-calc100minus5remby2 mt-24 flex flex-col items-center">
+    <div className=" w-full h-calc100minus5rem lg:w-3/6 lg:h-auto md:w-1/2 md:h-calc100minus5rem sm:w-full sm:h-auto sm:pl-8 lg:pl-0 md:pl-0 md:mt-24 pl-8 lg:mt-24 sm:mt-5 mt-5 flex flex-col lg:items-center md:items-center sm:items-start items-start order-2 lg:order-3 md:order-3 sm:order-2">
       {loading ? (
         <SongShimmer />
       ) : (

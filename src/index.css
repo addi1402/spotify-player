@@ -47,6 +47,7 @@
 body {
   color: white;
   overflow: hidden;
+  overscroll-behavior: none;
   background: linear-gradient(
     to bottom right,
     var(--accent) -20%,
@@ -111,7 +112,7 @@ input[type="range"] {
   border-radius: 16px;
 }
 
-.song-fade-in{
+.song-fade-in {
   animation: fade-in 1s ease-out both;
 }
 
@@ -137,4 +138,28 @@ input[type="range"] {
 .fade-exit-active {
   opacity: 0;
   transition: opacity 300ms ease-in;
+}
+
+#expandSongListButton {
+  display: none;
+}
+
+/* Show the button when screen width is 768px or less (sm breakpoint) */
+@media (max-width: 768px) {
+  #expandSongListButton {
+    display: inline-block; /* or block */
+  }
+}
+
+@media (max-width: 768px) {
+  body{
+    overflow: auto;
+    overscroll-behavior: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .frame-two{
+    display: none;
+  }
 }
