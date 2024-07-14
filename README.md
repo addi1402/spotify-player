@@ -1,8 +1,4 @@
-# React + Vite
+# Spotify Music Player User Interface
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was developed as a part of the Front-End Role Assessment at Samespace. It is made using React, Vite, Tailwind CSS, ShadCN, Redux, and the Samespace API for songs. All the features specified in the assessment requirements have been met with and the project has been submitted in the stipulated timeline. You can view the Figma design for this project [here](https://www.figma.com/file/RtKhzEeeuD2FtRsg2dxSep/Front-end-Assessment?type=design&node-id=1-2&mode=design&t=zEkwOdYyaeNx0z7m-4).
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
