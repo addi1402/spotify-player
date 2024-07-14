@@ -21,30 +21,30 @@ export default function Controls({
 
   return (
     <div className="flex justify-between mt-8">
-      <div className="bg-slate-100 hover:bg-opacity-15 bg-opacity-10 rounded-full h-12 w-12 flex justify-center items-center cursor-pointer transition duration-300">
+      <div className="bg-slate-100 hover:bg-opacity-15 bg-opacity-10 rounded-full h-12 w-12 flex justify-center items-center cursor-pointer transition duration-300 controller">
         <img src="/options.svg" alt="Options" />
       </div>
       <img
         src="/previous.svg"
         alt="Previous Song"
-        className="cursor-pointer"
+        className="cursor-pointer controller"
         onClick={handlePreviousSong}
       />
       <img
         src={isPlaying ? "/pause.svg" : "/play.svg"}
         alt="Play/Pause"
-        className="cursor-pointer"
+        className="cursor-pointer controller"
         onClick={togglePlayPause}
       />
       <img
         src="/next.svg"
         alt="Next Song"
-        className="cursor-pointer"
+        className="cursor-pointer controller"
         onClick={handleNextSong}
       />
       <div
         onClick={() => setShowVolumeControl(!showVolumeControl)}
-        className="bg-slate-100 hover:bg-opacity-15 bg-opacity-10 rounded-full h-12 w-12 flex justify-center items-center cursor-pointer transition duration-300"
+        className="bg-slate-100 controller hover:bg-opacity-15 bg-opacity-10 rounded-full h-12 w-12 flex justify-center items-center cursor-pointer transition duration-300"
       >
         <img src="/volume.svg" alt="Volume" />
         {showVolumeControl && (

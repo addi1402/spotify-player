@@ -155,7 +155,11 @@ input[type="range"] {
 @media (max-width: 765px) {
   body {
     overflow: scroll;
-    height: calc(100vh + 780px);
+    /* height: 100%; */
+  }
+
+  .body-songs {
+    height: 100%;
   }
 
   .songListHeader {
@@ -169,5 +173,25 @@ input[type="range"] {
     width: 100vw;
     max-width: 60vw;
     max-height: 60vw;
+  }
+}
+
+@media (max-width: 479px) {
+  .coverImg {
+    height: calc(100vw - 2rem);
+    width: 100vw;
+    max-width: 60vw;
+    max-height: 60vw;
+  }
+
+  html {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 450px) {
+  .controller {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }

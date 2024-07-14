@@ -8,7 +8,7 @@ export default function SongCoverImage({
 }) {
   const boxStyle = "lg:h-96 lg:w-96 md:h-80 md:w-80 sm:h-96 sm:w-96";
   return (
-    <div className={`mt-8 relative ${boxStyle}`}>
+    <div className={`mt-8 relative ${boxStyle} coverImg`}>
       {!imageLoaded && <Skeleton className="absolute inset-0 rounded-lg coverImg" />}
       <img
         src={current.cover}

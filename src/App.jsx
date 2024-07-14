@@ -4,7 +4,7 @@ import FrameTwo from "@/components/frames/FrameTwo";
 
 export default function App() {
   return (
-    <div className="flex flex-wrap h-screen">
+    <div className="flex flex-wrap h-screen body-songs">
       <FrameOne />
       <FrameTwo />
       <FrameThree />
