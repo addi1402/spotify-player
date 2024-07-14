@@ -4,14 +4,23 @@ import { fetchSongs } from "@/redux/slices/dataSlice";
 import SongCard from "./SongCard";
 import Shimmer from "../miscellaneous/SongsShimmer";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Button from "../frameThree/Button";
+import useScreenSize from "@/components/miscellaneous/useScreenSize";
+import { setShowSongs } from "@/redux/slices/dataSlice";
 
 export default function SongList() {
   const dispatch = useDispatch();
-  const { loading, error, current, searchResults, songTab } = useSelector(
-    (store) => store.songs
-  );
+  const { loading, error, current, searchResults, songTab, showSongs } =
+    useSelector((store) => store.songs);
   const [activeTab, setActiveTab] = useState(songTab);
   const [fadeClass, setFadeClass] = useState("opacity-100");
+  const isSmallScreen = useScreenSize();
+
+  useEffect(() => {
+    if (!isSmallScreen && !showSongs) {
+      dispatch(setShowSongs(true));
+    }
+  }, [isSmallScreen, showSongs, dispatch]);
 
   // Initial Song Fetching
   useEffect(() => {
@@ -38,44 +47,47 @@ export default function SongList() {
 
   return (
     <main
-      className="mt-6 scroll-smooth flex-grow overflow-scroll min-w-80"
+      className="mt-6 scroll-smooth flex-grow overflow-scroll min-w-80 lg:h-calcSongList md:h-calcSongListMedium"
       id="scrollable"
     >
+      <Button />
       {loading &&
         Array.from({ length: 8 }, (_, index) => {
           return <Shimmer key={index} />;
         })}
       {error && <div>Error: {error}</div>}
-      <div className={`transition-opacity duration-500 ${fadeClass}`}>
-        {activeTab === "forYou" ? (
-          <TransitionGroup component="div">
-            {searchResults?.map((song) => (
-              <CSSTransition key={song.id} timeout={300} classNames="fade">
-                <SongCard key={song.id} {...song} />
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        ) : (
-          <div>
+      {showSongs && (
+        <div className={`transition-opacity duration-500 ${fadeClass}`}>
+          {activeTab === "forYou" ? (
             <TransitionGroup component="div">
-              {searchResults?.map((song) => {
-                if (song.top_track) {
-                  return (
-                    <CSSTransition
-                      key={song.id}
-                      timeout={300}
-                      classNames="fade"
-                    >
-                      <SongCard key={song.id} {...song} />
-                    </CSSTransition>
-                  );
-                }
-                return null; // Handle other cases if needed
-              })}
+              {searchResults?.map((song) => (
+                <CSSTransition key={song.id} timeout={300} classNames="fade">
+                  <SongCard key={song.id} {...song} />
+                </CSSTransition>
+              ))}
             </TransitionGroup>
-          </div>
-        )}
-      </div>
+          ) : (
+            <div>
+              <TransitionGroup component="div">
+                {searchResults?.map((song) => {
+                  if (song.top_track) {
+                    return (
+                      <CSSTransition
+                        key={song.id}
+                        timeout={300}
+                        classNames="fade"
+                      >
+                        <SongCard key={song.id} {...song} />
+                      </CSSTransition>
+                    );
+                  }
+                  return null; // Handle other cases if needed
+                })}
+              </TransitionGroup>
+            </div>
+          )}
+        </div>
+      )}
     </main>
   );
 }

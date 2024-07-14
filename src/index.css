@@ -2,27 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* setting up custom fonts */
 @font-face {
   font-family: "Circular";
   src: url("./assets/fonts/CircularSpotifyText-Book.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Circular";
   src: url("./assets/fonts/CircularSpotifyText-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Circular";
   src: url("./assets/fonts/CircularSpotifyText-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
   font-family: "Circular";
   src: url("./assets/fonts/CircularSpotifyText-Black.otf") format("opentype");
@@ -30,6 +28,7 @@
   font-style: normal;
 }
 
+/* universal styling */
 * {
   padding: 0;
   margin: 0;
@@ -38,6 +37,7 @@
   font-family: "Circular";
 }
 
+/* setting up gradient color variable */
 @property --accent {
   syntax: "<color>";
   initial-value: #03034f;
@@ -47,14 +47,17 @@
 body {
   color: white;
   overflow: hidden;
+  overscroll-behavior: none;
   background: linear-gradient(
     to bottom right,
     var(--accent) -20%,
     rgba(0, 0, 0, 1) 100%
   );
-  transition: --accent 3s;
+  background-repeat: no-repeat;
+  transition: --accent 5s;
 }
 
+/* setting image as non-draggable */
 img {
   user-drag: none;
   -moz-user-select: none;
@@ -63,37 +66,35 @@ img {
   -ms-user-select: none;
 }
 
+/* show no scrollbar */
 #scrollable::-webkit-scrollbar {
   display: none;
 }
 
+/* setting text-selection color */
 ::selection {
   background: rgba(255, 255, 255, 0.15); /* White background with 50% opacity */
   color: #ffffff; /* White text color */
 }
 
+/* setting volume + seeker track */
 input[type="range"] {
-  /* removing default appearance */
   -webkit-appearance: none;
   appearance: none;
-  /* creating a custom design */
   width: 100%;
   cursor: pointer;
   outline: none;
 }
 
 input[type="range"] {
-  /*  styling the track  */
   height: 0.375rem;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  /* removing default appearance */
   -webkit-appearance: none;
   appearance: none;
-  /* creating a custom design */
   height: 0.375rem;
   width: 1rem;
   background-color: #fff;
@@ -101,17 +102,16 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  /*  slider progress trick  */
   box-shadow: -407px 0 0 400px #fff;
 }
 
 input[type="range"] {
-  /*  slider progress trick  */
   overflow: hidden;
   border-radius: 16px;
 }
 
-.song-fade-in{
+/* setting song card animation */
+.song-fade-in {
   animation: fade-in 1s ease-out both;
 }
 
@@ -124,6 +124,7 @@ input[type="range"] {
   }
 }
 
+/* setting react-animation-group animators */
 .fade-enter {
   opacity: 0;
 }
@@ -137,4 +138,60 @@ input[type="range"] {
 .fade-exit-active {
   opacity: 0;
   transition: opacity 300ms ease-in;
+}
+
+#expandSongListButton {
+  display: none;
+}
+
+/* Show the button when screen width is 768px or less (sm breakpoint) */
+@media (max-width: 768px) {
+  #expandSongListButton {
+    display: inline-block; /* or block */
+  }
+}
+
+/* No Frame Two for small and smaller sizes */
+@media (max-width: 765px) {
+  body {
+    overflow: scroll;
+    /* height: 100%; */
+  }
+
+  .body-songs {
+    height: 100%;
+  }
+
+  .songListHeader {
+    display: none;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 638px) {
+  .coverImg {
+    height: calc(100vw - 2rem);
+    width: 100vw;
+    max-width: 60vw;
+    max-height: 60vw;
+  }
+}
+
+@media (max-width: 479px) {
+  .coverImg {
+    height: calc(100vw - 2rem);
+    width: 100vw;
+    max-width: 60vw;
+    max-height: 60vw;
+  }
+
+  html {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 450px) {
+  .controller {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
