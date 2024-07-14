@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SongShimmer from "../miscellaneous/SongShimmer";
-import SongHeader from "../frameThree/SongHeader";
-import SongCoverImage from "../frameThree/SongCoverImage";
-import Tracer from "../frameThree/Tracer";
-import Controls from "../frameThree/Controls";
+import SongShimmer from "@/components/miscellaneous/SongShimmer";
+import SongHeader from "@/components/frameThree/SongHeader";
+import SongCoverImage from "@/components/frameThree/SongCoverImage";
+import Tracer from "@/components/frameThree/Tracer";
+import Controls from "@/components/frameThree/Controls";
 import { playNext, playPrevious } from "@/redux/slices/dataSlice";
+import Button from "@/components/frameThree/Button";
+import SongFrame from "../frameThree/SongFrame";
 
 const FrameThree = () => {
   const dispatch = useDispatch();
@@ -94,47 +96,50 @@ const FrameThree = () => {
 
   return (
     <div className=" w-full h-calc100minus5rem lg:w-3/6 lg:h-auto md:w-1/2 md:h-calc100minus5rem sm:w-full sm:h-auto sm:pl-8 lg:pl-0 md:pl-0 md:mt-24 pl-8 lg:mt-24 sm:mt-5 mt-5 flex flex-col lg:items-center md:items-center sm:items-start items-start order-2 lg:order-3 md:order-3 sm:order-2">
-      {loading ? (
-        <SongShimmer />
-      ) : (
-        <div>
-          <SongHeader current={current} />
+      <div className="flex items-start gap-10">
+        {loading ? (
+          <SongShimmer />
+        ) : (
+          <div>
+            <SongHeader current={current} />
 
-          {/* <SongCoverImage
-            handleImageLoad={handleImageLoad}
-            current={current}
-            imageLoaded={imageLoaded}
-            fadeClass={fadeClass}
-          /> */}
+            <SongCoverImage
+              handleImageLoad={handleImageLoad}
+              current={current}
+              imageLoaded={imageLoaded}
+              fadeClass={fadeClass}
+            />
 
-          <Tracer
-            duration={duration}
-            currentTime={currentTime}
-            handleSeek={handleSeek}
-            formatTime={formatTime}
-          />
+            <Tracer
+              duration={duration}
+              currentTime={currentTime}
+              handleSeek={handleSeek}
+              formatTime={formatTime}
+            />
 
-          <Controls
-            volume={volume}
-            handleVolumeChange={handleVolumeChange}
-            handlePreviousSong={handlePreviousSong}
-            handleNextSong={handleNextSong}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-            currentTime={currentTime}
-            duration={duration}
-            togglePlayPause={togglePlayPause}
-            showVolumeControl={showVolumeControl}
-            setShowVolumeControl={setShowVolumeControl}
-          />
+            <Controls
+              volume={volume}
+              handleVolumeChange={handleVolumeChange}
+              handlePreviousSong={handlePreviousSong}
+              handleNextSong={handleNextSong}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
+              currentTime={currentTime}
+              duration={duration}
+              togglePlayPause={togglePlayPause}
+              showVolumeControl={showVolumeControl}
+              setShowVolumeControl={setShowVolumeControl}
+            />
 
-          <audio
-            ref={audioRef}
-            onTimeUpdate={handleTimeUpdate}
-            onLoadedMetadata={handleLoadedMetadata}
-          />
-        </div>
-      )}
+            <audio
+              ref={audioRef}
+              onTimeUpdate={handleTimeUpdate}
+              onLoadedMetadata={handleLoadedMetadata}
+            />
+          </div>
+        )}
+        {/* <SongFrame/> */}
+      </div>
     </div>
   );
 };
