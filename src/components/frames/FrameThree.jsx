@@ -100,12 +100,12 @@ const FrameThree = () => {
         <div>
           <SongHeader current={current} />
 
-          <SongCoverImage
+          {/* <SongCoverImage
             handleImageLoad={handleImageLoad}
             current={current}
             imageLoaded={imageLoaded}
             fadeClass={fadeClass}
-          />
+          /> */}
 
           <Tracer
             duration={duration}

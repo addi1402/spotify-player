@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+// Thunk for fetching song data
 export const fetchSongs = createAsyncThunk("songs/fetchSongs", async () => {
   try {
     const response = await fetch("https://cms.samespace.com/items/songs");
@@ -16,16 +17,17 @@ export const fetchSongs = createAsyncThunk("songs/fetchSongs", async () => {
   }
 });
 
+// Song Slice
 const songSlice = createSlice({
   name: "songs",
   initialState: {
-    data: [],
-    searchResults: [],
-    current: {},
-    songTab: "forYou",
-    showSongs: "true",
-    loading: false,
-    error: null,
+    data: [], // song data
+    searchResults: [], // search-bar results
+    current: {}, // current playing song
+    songTab: "forYou", // active song tab
+    showSongs: "true", // toggle button
+    loading: false, // data loading state
+    error: null, // error performing side-effects
   },
   extraReducers: (builder) => {
     builder
@@ -77,8 +79,7 @@ const songSlice = createSlice({
       };
     },
     playPrevious: (state) => {
-      // Following CONTEXTUAL and USER CENTRIC approach
-
+      // Following CONTEXTUAL approach
       let index, prevIndex, prevSong, filteredList;
       filteredList = state.data.filter((song) => song.top_track);
 
@@ -119,7 +120,8 @@ const songSlice = createSlice({
   },
 });
 
-export default songSlice.reducer;
+export default songSlice.reducer; // exporting root reducer
+// exporting action generator functions
 export const {
   setCurrent,
   playNext,
