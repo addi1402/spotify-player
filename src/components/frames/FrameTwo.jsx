@@ -1,29 +1,24 @@
 import React from "react";
-import Tabs from "../frameTwo/Tabs";
-import SongList from "../frameTwo/SongList";
-import SearchBar from "../frameTwo/SearchBar";
+import Tabs from "@/components/frameTwo/Tabs";
+import SongList from "@/components/frameTwo/SongList";
+import SearchBar from "@/components/frameTwo/SearchBar";
 
-const FrameTwo = () => {
+export default function FrameTwo() {
   return (
-    <div
+    <main
       className="
-      w-full h-calc100minus5remby2 
-      lg:w-2/6 lg:h-full 
-      md:w-1/2 md:h-calc100minus5rem
-      sm:w-full sm:h-auto
-      p-10 pb-0 flex flex-col gap-0
-      order-3 lg:order-2 md:order-2 sm:order-3 bg-transparent
-      frame-two"
+      sm:w-full sm:h-20 sm:p-8
+      md:w-1/2 md:h-calcOne md:p-10
+      lg:w-2/6 lg:h-screen lg:p-10
+      w-full h-calc100minus5remby2
+      p-8 pb-0 flex flex-col gap-0
+      order-3 lg:order-2 md:order-2 sm:order-3"
     >
-      <div>
-        <div>
-          <Tabs />
-          <SearchBar />
-        </div>
-        <SongList />
-      </div>
-    </div>
+      <header>
+        <Tabs />
+        <SearchBar />
+      </header>
+      <SongList />
+    </main>
   );
-};
-
-export default FrameTwo;
+}

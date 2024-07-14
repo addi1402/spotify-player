@@ -54,7 +54,7 @@ body {
     rgba(0, 0, 0, 1) 100%
   );
   background-repeat: no-repeat;
-  transition: --accent 3s;
+  transition: --accent 7s;
 }
 
 /* setting image as non-draggable */
@@ -148,18 +148,5 @@ input[type="range"] {
 @media (max-width: 768px) {
   #expandSongListButton {
     display: inline-block; /* or block */
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    overflow: auto;
-    overscroll-behavior: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .frame-two {
-    display: none;
   }
 }
